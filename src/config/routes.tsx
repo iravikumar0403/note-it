@@ -1,8 +1,8 @@
-import { Dashboard } from "../pages"
+import { Home } from "../pages"
 
 export const routes = [
     {
         path: '/',
-        element: (<Dashboard/>)
+        element: (<Home/>)
     }
   ];
