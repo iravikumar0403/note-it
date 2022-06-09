@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Navbar, TabLinks } from "../components";
+import { CreateNoteBtn, Navbar, TabLinks } from "../components";
 
 export const Dashboard = () => {
   return (
@@ -7,6 +7,7 @@ export const Dashboard = () => {
       <Navbar />
       <TabLinks />
       <Outlet />
+      <CreateNoteBtn />
     </div>
   );
 };

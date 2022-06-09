@@ -1,10 +1,12 @@
 export { Avatar } from "./Avatar";
 export { ButtonWithLoader } from "./ButtonWithLoader";
+export { CreateNoteBtn } from "./CreateNoteBtn";
 export { Footer } from "./Footer";
 export { Navbar } from "./Navbar";
 export { NoteCard } from "./NoteCard";
 export { NotesGrid } from "./NotesGrid";
 export { RequireAuth } from "./RequireAuth";
+export { RichTextEditor } from "./RichTextEditor";
 export { Sidebar } from "./Sidebar";
 export { TabLinks } from "./TabLinks";
 export { Toast } from "./Toast";

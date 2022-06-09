@@ -16,4 +16,8 @@
   .btn-secondary {
     @apply border border-gray-800 px-4 py-1 rounded hover:bg-gray-700 hover:text-gray-100;
   }
+
+  .tiptap-editor .ProseMirror {
+    @apply border shadow rounded p-4;
+  }
 }

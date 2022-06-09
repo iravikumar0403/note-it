@@ -1,2 +1,5 @@
-export { Home } from './Home'
-export { Login } from './Login'
+export { Home } from "./Home";
+export { Login } from "./Login";
+export { Signup } from "./Signup";
+export { Dashboard } from "./Dashboard";
+export { CreateNewNote } from "./CreateNewNote";

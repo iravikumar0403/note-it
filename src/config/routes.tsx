@@ -1,8 +1,5 @@
-import { NotesGrid } from "../components";
-import { RequireAuth } from "../components/RequireAuth";
-import { Home, Login } from "../pages";
-import { Dashboard } from "../pages/Dashboard";
-import { Signup } from "../pages/Signup";
+import { NotesGrid, RequireAuth } from "../components";
+import { Home, Login, Signup, CreateNewNote, Dashboard } from "../pages";
 
 export const routes = [
   {
@@ -37,6 +34,10 @@ export const routes = [
             path: "/dashboard/folders",
           },
         ],
+      },
+      {
+        path: "/notes/new",
+        element: <CreateNewNote />,
       },
     ],
   },
