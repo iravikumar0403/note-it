@@ -24,7 +24,7 @@ export const NotesGrid = () => {
 
   console.log(notes, loading);
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-wrap justify-center">
       {notes.map((note) => (
         <NoteCard note={note} key={note.id} />
       ))}
