@@ -23,8 +23,8 @@ export const UserProvider = ({ children }: children) => {
     return new Promise(async (resolve, reject) => {
       const { user, error }: any = await supabase.auth.signIn(values);
       if (user) {
-        setUser({ username: user.username, email: user.email });
-        resolve({ username: user.username, email: user.email });
+        setUser({ username: user.user_metadata.username, email: user.email });
+        resolve({ username: user.user_metadata.username, email: user.email });
       }
       if (error) {
         toast.error(error.message);
@@ -47,8 +47,8 @@ export const UserProvider = ({ children }: children) => {
         }
       );
       if (user) {
-        setUser({ username: user.username, email: user.email });
-        resolve({ username: user.username, email: user.email });
+        setUser({ username: user.user_metadata.username, email: user.email });
+        resolve({ username: user.user_metadata.username, email: user.email });
       }
       if (error) {
         toast.error(error.message);

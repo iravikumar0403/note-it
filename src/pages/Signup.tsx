@@ -20,10 +20,8 @@ export const Signup = () => {
   const { user, signup } = useUserContext();
 
   const handleSubmit = async (values: signupFormValues) => {
-    console.log(values);
     setIsLoading(true);
-    signup(values);
-    setIsLoading(false);
+    signup(values).finally(() => setIsLoading(false));
   };
 
   if (user) {
