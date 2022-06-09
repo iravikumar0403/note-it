@@ -1,11 +1,13 @@
-import React from "react";
-import { Navbar } from "../components";
+import { Outlet } from "react-router-dom";
+import { CreateNoteBtn, Navbar, TabLinks } from "../components";
 
 export const Dashboard = () => {
   return (
     <div>
       <Navbar />
-      Dashboard
+      <TabLinks />
+      <Outlet />
+      <CreateNoteBtn />
     </div>
   );
 };

@@ -6,6 +6,26 @@
   html {
     font-family: "Poppins", sans-serif;
   }
+
+  .tiptap-editor h1 {
+    @apply text-4xl;
+  }
+
+  .tiptap-editor h2 {
+    @apply text-2xl;
+  }
+
+  .tiptap-editor h3 {
+    @apply text-xl;
+  }
+
+  .tiptap-editor ul {
+    @apply list-disc ml-8;
+  }
+
+  .tiptap-editor ol {
+    @apply list-decimal ml-8;
+  }
 }
 
 @layer components {
@@ -15,5 +35,29 @@
 
   .btn-secondary {
     @apply border border-gray-800 px-4 py-1 rounded hover:bg-gray-700 hover:text-gray-100;
+  }
+
+  .editor-control {
+    @apply border p-1 rounded h-8 w-8 min-w-max hover:bg-gray-800 hover:text-gray-200 m-1;
+  }
+
+  .editor-control-active {
+    @apply border p-1 rounded h-8 w-8 min-w-max bg-gray-800 text-gray-200 m-1;
+  }
+
+  .editor .ProseMirror {
+    @apply border shadow p-4 rounded;
+  }
+
+  .editor .ProseMirror:focus .is-editor-empty:not(:focus)::before {
+    display: none;
+  }
+
+  .editor .is-editor-empty:not(:focus)::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
   }
 }
