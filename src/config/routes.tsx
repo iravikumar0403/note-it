@@ -1,3 +1,4 @@
+import { NotesGrid } from "../components";
 import { RequireAuth } from "../components/RequireAuth";
 import { Home, Login } from "../pages";
 import { Dashboard } from "../pages/Dashboard";
@@ -23,6 +24,19 @@ export const routes = [
       {
         path: "/dashboard",
         element: <Dashboard />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <NotesGrid />,
+          },
+          {
+            path: "/dashboard/notes",
+            element: <NotesGrid />,
+          },
+          {
+            path: "/dashboard/folders",
+          },
+        ],
       },
     ],
   },
