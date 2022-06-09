@@ -1,4 +1,4 @@
-import { NotesGrid, RequireAuth } from "../components";
+import { FoldersGrid, NotesGrid, RequireAuth } from "../components";
 import { Home, Login, Signup, CreateNewNote, Dashboard } from "../pages";
 
 export const routes = [
@@ -32,6 +32,7 @@ export const routes = [
           },
           {
             path: "/dashboard/folders",
+            element: <FoldersGrid />,
           },
         ],
       },

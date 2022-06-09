@@ -14,7 +14,6 @@ export const NotesGrid = () => {
         .from("notes")
         .select()
         .order("created_at", { ascending: false });
-      console.log(data);
       if (data) {
         setNotes([...data]);
       }
@@ -25,7 +24,10 @@ export const NotesGrid = () => {
     })();
   }, []);
 
-  console.log(notes, loading);
+  if (loading) {
+    return <p className="text-center">Loading...</p>;
+  }
+
   return (
     <div className="flex flex-wrap justify-center">
       {notes.map((note) => (

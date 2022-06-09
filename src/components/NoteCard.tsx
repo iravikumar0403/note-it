@@ -7,7 +7,7 @@ type noteProps = {
 };
 
 export const NoteCard = ({ note }: noteProps) => {
-  const { id, created_at, tags, title, text_content } = note;
+  const { created_at, tags, title, text_content } = note;
   return (
     <div className="flex flex-col shadow border m-2 p-4 w-[20rem] sm:w-[32rem]">
       <p className="text-2xl border-b">{title}</p>
@@ -15,8 +15,11 @@ export const NoteCard = ({ note }: noteProps) => {
         {text_content.substring(0, 250) + "..."}
       </p>
       <div className="flex flex-wrap mt-auto">
-        {tags.map((tag) => (
-          <p key={id} className="rounded-full px-4 py-1 my-2 mr-1 bg-slate-200">
+        {tags.map((tag, index) => (
+          <p
+            key={index}
+            className="rounded-full px-4 py-1 my-2 mr-1 bg-slate-200"
+          >
             {tag}
           </p>
         ))}
