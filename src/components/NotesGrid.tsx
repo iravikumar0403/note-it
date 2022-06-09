@@ -10,7 +10,10 @@ export const NotesGrid = () => {
 
   useEffect(() => {
     (async () => {
-      const { data, error } = await supabase.from("notes").select();
+      const { data, error } = await supabase
+        .from("notes")
+        .select()
+        .order("created_at", { ascending: false });
       console.log(data);
       if (data) {
         setNotes([...data]);

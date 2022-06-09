@@ -6,4 +6,5 @@ export type note = {
   tags: string[];
   user_id: string;
   content: any;
+  text_content: string;
 };

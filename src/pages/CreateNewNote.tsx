@@ -48,10 +48,12 @@ export const CreateNewNote = () => {
     }
     setIsLoading(true);
     const content = editor?.getJSON();
+    const text_content = editor?.getText();
     const { data, error } = await supabase.from("notes").insert([
       {
         title,
         content,
+        text_content,
         tags: [],
         folder_id: selectedFolder,
       },
