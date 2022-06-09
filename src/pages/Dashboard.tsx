@@ -1,11 +1,10 @@
-import React from "react";
-import { Navbar } from "../components";
+import { Editor, Navbar } from "../components";
 
 export const Dashboard = () => {
   return (
     <div>
       <Navbar />
-      Dashboard
+      <Editor />
     </div>
   );
 };

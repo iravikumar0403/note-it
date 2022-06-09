@@ -1,6 +1,7 @@
 import { loginFormValues, signupFormValues } from "./formValues.types";
 
 export type userType = {
+  id: string;
   username: string;
   email: string;
 };

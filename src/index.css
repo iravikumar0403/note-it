@@ -6,6 +6,22 @@
   html {
     font-family: "Poppins", sans-serif;
   }
+
+  .editor h1 {
+    @apply text-4xl;
+  }
+
+  .editor h2 {
+    @apply text-2xl;
+  }
+
+  .editor h3 {
+    @apply text-xl;
+  }
+
+  .editor ul {
+    @apply list-disc ml-8;
+  }
 }
 
 @layer components {
@@ -15,5 +31,17 @@
 
   .btn-secondary {
     @apply border border-gray-800 px-4 py-1 rounded hover:bg-gray-700 hover:text-gray-100;
+  }
+
+  .editor-control {
+    @apply border p-1 rounded h-8 w-8 min-w-max hover:bg-gray-800 hover:text-gray-200 m-1;
+  }
+
+  .editor-control-active {
+    @apply border p-1 rounded h-8 w-8 min-w-max bg-gray-800 text-gray-200 m-1;
+  }
+
+  .editor .ProseMirror {
+    @apply border shadow p-4 rounded;
   }
 }
