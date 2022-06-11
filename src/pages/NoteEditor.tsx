@@ -32,11 +32,15 @@ export const NoteEditor = () => {
   useEffect(() => {
     if (id) {
       const note = getNoteById(id);
-      setTitle(note.title);
-      setSelectedFolder(note.folder_id);
-      editor?.commands.setContent(note.content);
+      if (note) {
+        setTitle(note.title);
+        setSelectedFolder(note.folder_id);
+        editor?.commands.setContent(note.content);
+      } else {
+        navigate("/dashboard/notes");
+      }
     }
-  }, [editor, getNoteById, id]);
+  }, [editor, getNoteById, id, navigate]);
 
   const handleSave = async () => {
     if (title === "") {

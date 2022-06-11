@@ -32,11 +32,11 @@ export const NotesProvider = ({ children }: children) => {
         ]);
         dispatch({
           type: "SET_FOLDERS",
-          payload: notes,
+          payload: folders,
         });
         dispatch({
           type: "SET_NOTES",
-          payload: folders,
+          payload: notes,
         });
       } catch (error) {
         toast.error("Something went wrong");
@@ -45,7 +45,7 @@ export const NotesProvider = ({ children }: children) => {
     })();
   }, []);
 
-  const getNoteById: (id: string) => note = (id: string) => {
+  const getNoteById: (id: string) => note | undefined = (id: string) => {
     const note = notes.find((note: note) => note.id === id);
     if (note) {
       return note;

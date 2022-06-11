@@ -17,11 +17,11 @@ export const Dashboard = () => {
         ]);
         dispatch({
           type: "SET_FOLDERS",
-          payload: notes,
+          payload: folders,
         });
         dispatch({
           type: "SET_NOTES",
-          payload: folders,
+          payload: notes,
         });
       } catch (error) {
         toast.error("Something went wrong");

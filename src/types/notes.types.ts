@@ -21,9 +21,23 @@ export type notesContext = {
   loading: boolean;
   notes: note[];
   folders: folderType[];
-  getNoteById: (id: string) => note;
-  dispatch: React.Dispatch<{
-    type: string;
-    payload?: any;
-  }>;
+  getNoteById: (id: string) => note | undefined;
+  dispatch: React.Dispatch<noteReducerAction>;
 };
+
+export type noteReducerAction =
+  | {
+      type: "INIT_LOADING";
+    }
+  | {
+      type: "SET_NOTES";
+      payload: note[];
+    }
+  | {
+      type: "SET_FOLDERS";
+      payload: folderType[];
+    }
+  | {
+      type: "DELETE_NOTE";
+      payload: string;
+    };

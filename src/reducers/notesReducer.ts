@@ -1,8 +1,8 @@
-import { noteContextState } from "../types/notes.types";
+import { noteContextState, noteReducerAction } from "../types";
 
 export const notesReducer = (
   state: noteContextState,
-  action: { type: string; payload?: any }
+  action: noteReducerAction
 ) => {
   switch (action.type) {
     case "INIT_LOADING":
