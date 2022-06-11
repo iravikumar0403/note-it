@@ -24,7 +24,7 @@ export const Login = () => {
   };
 
   if (user) {
-    return <Navigate to={"/dashboard"} replace />;
+    return <Navigate to={"/dashboard/notes"} replace />;
   }
   return (
     <div className="flex flex-col h-screen">

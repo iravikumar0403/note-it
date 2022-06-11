@@ -9,7 +9,7 @@ export const Home = () => {
   const { user } = useUserContext();
 
   if (user) {
-    return <Navigate to="/dashboard" replace={true} />;
+    return <Navigate to="/dashboard/notes" replace={true} />;
   }
 
   return (

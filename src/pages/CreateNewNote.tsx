@@ -63,7 +63,7 @@ export const CreateNewNote = () => {
     }
     if (data) {
       console.log(data);
-      navigate("/dashboard");
+      navigate("/dashboard/notes");
     }
     setIsLoading(false);
   };

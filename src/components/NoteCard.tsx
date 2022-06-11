@@ -1,15 +1,19 @@
 import React from "react";
 import dayjs from "dayjs";
 import { note } from "../types/notes.types";
+import { Link } from "react-router-dom";
 
 type noteProps = {
   note: note;
 };
 
 export const NoteCard = ({ note }: noteProps) => {
-  const { created_at, tags, title, text_content } = note;
+  const { created_at, tags, title, text_content, id } = note;
   return (
-    <div className="flex flex-col shadow border m-2 p-4 w-[20rem] sm:w-[32rem]">
+    <Link
+      to={`/notes/view/${id}`}
+      className="flex flex-col shadow border m-2 p-4 w-[20rem] sm:w-[32rem]"
+    >
       <p className="text-2xl border-b">{title}</p>
       <p className="text-gray-800 text-justify my-2">
         {text_content.substring(0, 250) + "..."}
@@ -30,6 +34,6 @@ export const NoteCard = ({ note }: noteProps) => {
           {dayjs(created_at).format("DD MMM, YYYY")}
         </span>
       </p>
-    </div>
+    </Link>
   );
 };

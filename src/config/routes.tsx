@@ -1,5 +1,12 @@
 import { FoldersGrid, NotesGrid, RequireAuth } from "../components";
-import { Home, Login, Signup, CreateNewNote, Dashboard } from "../pages";
+import {
+  Home,
+  Login,
+  Signup,
+  CreateNewNote,
+  Dashboard,
+  ViewNote,
+} from "../pages";
 
 export const routes = [
   {
@@ -39,6 +46,10 @@ export const routes = [
       {
         path: "/notes/new",
         element: <CreateNewNote />,
+      },
+      {
+        path: `/notes/view/:id`,
+        element: <ViewNote />,
       },
     ],
   },
