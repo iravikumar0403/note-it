@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
-import { CreateNoteBtn, Navbar, TabLinks } from "../components";
+import { AddNewBtn, Navbar, TabLinks } from "../components";
 import { useNotesContext } from "../context";
 import { fetchFolders, fetchNotes } from "../services";
 
@@ -34,7 +34,7 @@ export const Dashboard = () => {
       <Navbar />
       <TabLinks />
       <Outlet />
-      <CreateNoteBtn />
+      <AddNewBtn />
     </div>
   );
 };

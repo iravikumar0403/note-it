@@ -1,6 +1,6 @@
 export { Avatar } from "./Avatar";
 export { ButtonWithLoader } from "./ButtonWithLoader";
-export { CreateNoteBtn } from "./CreateNoteBtn";
+export { AddNewBtn } from "./AddNewBtn";
 export { EditNoteFAB } from "./EditNoteFAB";
 export { FolderCard } from "./FolderCard";
 export { FoldersGrid } from "./FoldersGrid";
