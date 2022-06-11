@@ -7,7 +7,7 @@ type folderCardProps = {
 };
 
 export const FolderCard = ({ folder }: folderCardProps) => {
-  const { created_at, folder_name, notes } = folder;
+  const { created_at, folder_name } = folder;
   return (
     <div className="flex flex-col shadow border m-2 p-4 w-[20rem] ">
       <div className="flex mt-2">
