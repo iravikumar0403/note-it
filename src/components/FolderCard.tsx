@@ -14,7 +14,10 @@ export const FolderCard = ({ folder }: folderCardProps) => {
         <AiOutlineFolder size={"1.5rem"} />
         <p className="text-xl">{folder_name}</p>
       </div>
-      <p className="my-1">{notes.length} notes</p>
+      {/* todo
+        add fix for notes count in a folder
+      */}
+      {/* <p className="my-1">{notes.length} notes</p> */}
       <p className="text-gray-500 ">
         Created at:{" "}
         <span className="text-gray-800">

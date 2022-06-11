@@ -23,6 +23,13 @@ export const Login = () => {
     login(values).finally(() => setIsLoading(false));
   };
 
+  const handleGuestLogin = async () => {
+    setIsLoading(true);
+    login({ email: "demouser@email.com", password: "demo123" }).finally(() =>
+      setIsLoading(false)
+    );
+  };
+
   if (user) {
     return <Navigate to={"/dashboard/notes"} replace />;
   }
@@ -74,6 +81,14 @@ export const Login = () => {
                 className="btn-primary py-2 my-2 flex justify-center items-center"
               >
                 Login
+              </ButtonWithLoader>
+              <ButtonWithLoader
+                type="button"
+                isLoading={isLoading}
+                className="btn-secondary py-2 my-2 flex justify-center items-center"
+                onClick={handleGuestLogin}
+              >
+                Login as guest
               </ButtonWithLoader>
               <div className="flex justify-center mt-2">
                 <p className="mr-3">Don't have an account yet?</p>
