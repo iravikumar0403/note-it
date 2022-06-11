@@ -23,6 +23,11 @@ export const notesReducer = (
         loading: false,
         folders: action.payload,
       };
+    case "DELETE_NOTE":
+      return {
+        ...state,
+        notes: state.notes.filter((note) => note.id !== action.payload),
+      };
     default:
       return state;
   }

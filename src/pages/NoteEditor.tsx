@@ -47,19 +47,23 @@ export const NoteEditor = () => {
       setIsLoading(true);
       const content = editor.getJSON();
       const text_content = editor.getText();
-      const noteData = {
-        title,
-        content,
-        text_content,
-        tags: [] as string[],
-        folder_id: selectedFolder,
-      };
-      if (id) {
-        await updateNote(noteData, id);
-      } else {
-        await addNewNote(noteData);
+      try {
+        const noteData = {
+          title,
+          content,
+          text_content,
+          tags: [] as string[],
+          folder_id: selectedFolder,
+        };
+        if (id) {
+          await updateNote(noteData, id);
+        } else {
+          await addNewNote(noteData);
+        }
+        navigate("/dashboard/notes");
+      } catch (error: any) {
+        toast.error(error.message);
       }
-      navigate("/dashboard/notes");
     }
     setIsLoading(false);
   };
@@ -68,14 +72,12 @@ export const NoteEditor = () => {
     <div>
       <Navbar />
       <div className="flex items-center my-2">
-        {!!id && (
-          <button
-            className="btn-secondary py-2 ml-2"
-            onClick={() => navigate(-1)}
-          >
-            Cancel
-          </button>
-        )}
+        <button
+          className="btn-secondary py-2 ml-2"
+          onClick={() => navigate(-1)}
+        >
+          Cancel
+        </button>
         <div className="flex items-center ml-auto mr-2">
           <label>Save to</label>
           <select

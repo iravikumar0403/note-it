@@ -5,7 +5,7 @@ import { routes } from "./config";
 const App = () => {
   const routesEl = useRoutes(routes);
   return (
-    <div>
+    <div className="mb-16">
       <Toast />
       {routesEl}
     </div>

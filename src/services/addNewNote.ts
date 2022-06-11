@@ -12,6 +12,5 @@ export const addNewNote = async (note: {
   if (error) {
     throw error;
   }
-
   return data;
 };
