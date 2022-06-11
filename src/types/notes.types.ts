@@ -21,6 +21,7 @@ export type notesContext = {
   loading: boolean;
   notes: note[];
   folders: folderType[];
+  getNoteById: (id: string) => note;
   dispatch: React.Dispatch<{
     type: string;
     payload?: any;

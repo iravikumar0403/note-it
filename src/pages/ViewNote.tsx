@@ -1,42 +1,37 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import { Navbar } from "../components";
-import { supabase } from "../config/supabaseClient";
-import { note } from "../types/notes.types";
+import { Navigate, useParams } from "react-router-dom";
+import { EditNoteFAB, Loader, Navbar } from "../components";
+import { useNotesContext } from "../context";
 
 export const ViewNote = () => {
   const { id } = useParams();
-  const [note, setNote] = useState<note | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const { data, error } = await supabase
-        .from("notes")
-        .select()
-        .eq("id", id);
-      if (data) {
-        setNote(data[0]);
-      }
-      if (error) {
-        toast.error(error.message);
-      }
-    })();
-  }, [id]);
+  const { getNoteById } = useNotesContext();
 
   const editor = useEditor({
     extensions: [StarterKit],
     content: null,
+    editable: false,
   });
+
+  if (!id) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  const note = getNoteById(id);
 
   if (editor && note && editor.getText().trim() === "") {
     editor.commands.setContent(note.content);
   }
 
   if (!note) {
-    return <p className="text-center">Loading...</p>;
+    return (
+      <>
+        <Navbar />
+
+        <Loader />
+      </>
+    );
   }
 
   return (
@@ -60,6 +55,7 @@ export const ViewNote = () => {
           {editor && <EditorContent editor={editor} />}
         </div>
       </div>
+      <EditNoteFAB />
     </div>
   );
 };

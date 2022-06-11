@@ -45,8 +45,17 @@ export const NotesProvider = ({ children }: children) => {
     })();
   }, []);
 
+  const getNoteById: (id: string) => note = (id: string) => {
+    const note = notes.find((note: note) => note.id === id);
+    if (note) {
+      return note;
+    }
+  };
+
   return (
-    <NotesContext.Provider value={{ loading, notes, folders, dispatch }}>
+    <NotesContext.Provider
+      value={{ loading, notes, folders, getNoteById, dispatch }}
+    >
       {children}
     </NotesContext.Provider>
   );
