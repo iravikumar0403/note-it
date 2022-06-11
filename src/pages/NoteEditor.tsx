@@ -8,6 +8,7 @@ import StarterKit from "@tiptap/starter-kit";
 import { toast } from "react-toastify";
 import { addNewNote, updateNote } from "../services";
 import { useNotesContext } from "../context";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export const NoteEditor = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const NoteEditor = () => {
   const [selectedFolder, setSelectedFolder] = useState(folders[0].id);
   const { id } = useParams();
 
+  useDocumentTitle(id ? "Edit Note / Note It" : "New Note / Note It")
   const editor = useEditor({
     extensions: [
       StarterKit,

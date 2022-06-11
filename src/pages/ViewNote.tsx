@@ -3,10 +3,12 @@ import StarterKit from "@tiptap/starter-kit";
 import { Navigate, useParams } from "react-router-dom";
 import { EditNoteFAB, Loader, Navbar } from "../components";
 import { useNotesContext } from "../context";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export const ViewNote = () => {
   const { id } = useParams();
   const { getNoteById } = useNotesContext();
+  useDocumentTitle("Note It");
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -17,7 +19,6 @@ export const ViewNote = () => {
   if (!id) {
     return <Navigate to="/dashboard" />;
   }
-
   const note = getNoteById(id);
 
   if (editor && note && editor.getText().trim() === "") {
@@ -28,12 +29,11 @@ export const ViewNote = () => {
     return (
       <>
         <Navbar />
-
         <Loader />
       </>
     );
   }
-
+  document.title = `${note.title} / Note It`;
   return (
     <div>
       <Navbar />
