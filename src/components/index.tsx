@@ -4,6 +4,7 @@ export { CreateNoteBtn } from "./CreateNoteBtn";
 export { FolderCard } from "./FolderCard";
 export { FoldersGrid } from "./FoldersGrid";
 export { Footer } from "./Footer";
+export { Loader } from "./Loader";
 export { Navbar } from "./Navbar";
 export { NoteCard } from "./NoteCard";
 export { NotesGrid } from "./NotesGrid";

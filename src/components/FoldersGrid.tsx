@@ -1,30 +1,11 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { supabase } from "../config/supabaseClient";
-import { folderType } from "../types/folder.types";
+import { useNotesContext } from "../context";
 import { FolderCard } from "./FolderCard";
+import { Loader } from "./Loader";
 
 export const FoldersGrid = () => {
-  const [folders, setFolders] = useState<folderType[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { loading, folders } = useNotesContext();
 
-  useEffect(() => {
-    (async () => {
-      const { data, error } = await supabase
-        .from("folders")
-        .select("*, notes!inner(*)")
-        .order("created_at", { ascending: false });
-      if (data) {
-        setFolders(data);
-      }
-      if (error) {
-        toast.error(error.message);
-      }
-      setIsLoading(false);
-    })();
-  }, []);
-
-  if (isLoading) return <p className="text-center">Loading...</p>;
+  if (loading) return <Loader />;
 
   return (
     <div className="flex flex-wrap justify-center">

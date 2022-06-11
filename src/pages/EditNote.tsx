@@ -1,20 +1,33 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { ButtonWithLoader, Navbar } from "../components";
-import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
 import { useEditor, EditorContent, FloatingMenu } from "@tiptap/react";
+import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
+import { supabase } from "../config/supabaseClient";
+import { toast } from "react-toastify";
+import { folderType } from "../types";
+import { useNavigate } from "react-router-dom";
 import Placeholder from "@tiptap/extension-placeholder";
 import StarterKit from "@tiptap/starter-kit";
-import { toast } from "react-toastify";
-import { addNewNote } from "../services";
-import { useNotesContext } from "../context";
 
 export const CreateNewNote = () => {
   const navigate = useNavigate();
-  const { folders } = useNotesContext();
   const [title, setTitle] = useState("");
+  const [folders, setFolders] = useState<folderType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedFolder, setSelectedFolder] = useState(folders[0].id);
+  const [selectedFolder, setSelectedFolder] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const { data, error } = await supabase.from("folders").select();
+      if (error) {
+        console.log(toast.error(error.message));
+      }
+      if (data) {
+        setFolders(data);
+        setSelectedFolder(data[0].id);
+      }
+    })();
+  }, []);
 
   const editor = useEditor({
     extensions: [
@@ -33,17 +46,23 @@ export const CreateNewNote = () => {
       toast.error("Please enter the note title");
       return;
     }
-    if (editor) {
-      setIsLoading(true);
-      const content = editor.getJSON();
-      const text_content = editor.getText();
-      await addNewNote({
+    setIsLoading(true);
+    const content = editor?.getJSON();
+    const text_content = editor?.getText();
+    const { data, error } = await supabase.from("notes").insert([
+      {
         title,
         content,
         text_content,
-        tags: [] as string[],
+        tags: [],
         folder_id: selectedFolder,
-      });
+      },
+    ]);
+    if (error) {
+      toast.error(error.message);
+    }
+    if (data) {
+      console.log(data);
       navigate("/dashboard/notes");
     }
     setIsLoading(false);
