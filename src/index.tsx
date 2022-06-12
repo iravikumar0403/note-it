@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider, NotesProvider } from "./context/";
+import { ModalProvider } from "./context/modal-contenxt";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,9 +13,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <NotesProvider>
-          <App />
-        </NotesProvider>
+        <ModalProvider>
+          <NotesProvider>
+            <App />
+          </NotesProvider>
+        </ModalProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
