@@ -8,17 +8,17 @@ import {
 import { toast } from "react-toastify";
 import { notesReducer } from "../reducers";
 import { fetchNotes, fetchFolders } from "../services";
-import { children, folderType, note, notesContext } from "../types";
+import { ChildrenProp, NoteContext, NoteState, Note } from "../types";
 
-const initialValue = {
+const initialValue: NoteState = {
   loading: false,
-  notes: [] as note[],
-  folders: [] as folderType[],
+  notes: [],
+  folders: [],
 };
 
-const NotesContext = createContext<notesContext>({} as notesContext);
+const NotesContext = createContext<NoteContext>({} as NoteContext);
 
-export const NotesProvider = ({ children }: children) => {
+export const NotesProvider = ({ children }: ChildrenProp) => {
   const [{ notes, folders }, dispatch] = useReducer(notesReducer, initialValue);
   const [loading, setLoading] = useState(false);
 
@@ -45,8 +45,8 @@ export const NotesProvider = ({ children }: children) => {
     })();
   }, []);
 
-  const getNoteById: (id: string) => note | undefined = (id: string) => {
-    const note = notes.find((note: note) => note.id === id);
+  const getNoteById: (id: string) => Note | undefined = (id: string) => {
+    const note = notes.find((note: Note) => note.id === id);
     if (note) {
       return note;
     }

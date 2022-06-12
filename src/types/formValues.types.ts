@@ -1,11 +1,11 @@
-export type signupFormValues = {
+export type SignupFormValues = {
   username: string;
   email: string;
   password: string;
   confirmPassword: string;
 };
 
-export type loginFormValues = {
+export type LoginFormValues = {
   email: string;
   password: string;
 };

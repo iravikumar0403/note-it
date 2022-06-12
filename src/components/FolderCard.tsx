@@ -1,12 +1,12 @@
 import dayjs from "dayjs";
 import { AiOutlineFolder } from "react-icons/ai";
-import { folderType } from "../types/folder.types";
+import { Folder } from "../types";
 
-type folderCardProps = {
-  folder: folderType;
+type FolderCardProps = {
+  folder: Folder;
 };
 
-export const FolderCard = ({ folder }: folderCardProps) => {
+export const FolderCard = ({ folder }: FolderCardProps) => {
   const { created_at, folder_name } = folder;
   return (
     <div className="flex flex-col shadow border m-2 p-4 w-[20rem] ">

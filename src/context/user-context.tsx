@@ -2,24 +2,24 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { supabase } from "../config/supabaseClient";
 import {
-  children,
-  loginFormValues,
-  signupFormValues,
-  userContextType,
-  userType,
+  ChildrenProp,
+  LoginFormValues,
+  SignupFormValues,
+  UserContextType,
+  User,
 } from "../types";
 
-const UserContext = createContext<userContextType>({
+const UserContext = createContext<UserContextType>({
   user: null,
-  signup: (values: signupFormValues) => new Promise(() => {}),
-  login: (values: loginFormValues) => new Promise(() => {}),
+  signup: (values: SignupFormValues) => new Promise(() => {}),
+  login: (values: LoginFormValues) => new Promise(() => {}),
   logout: () => {},
 });
 
-export const UserProvider = ({ children }: children) => {
-  const [user, setUser] = useState<userType | null>(null);
+export const UserProvider = ({ children }: ChildrenProp) => {
+  const [user, setUser] = useState<User | null>(null);
 
-  const login = async (values: loginFormValues) => {
+  const login = async (values: LoginFormValues) => {
     return new Promise(async (resolve, reject) => {
       const { user, error }: any = await supabase.auth.signIn(values);
       if (user) {
@@ -33,7 +33,7 @@ export const UserProvider = ({ children }: children) => {
     });
   };
 
-  const signup = async (values: signupFormValues) => {
+  const signup = async (values: SignupFormValues) => {
     return new Promise(async (resolve, reject) => {
       const { user, error }: any = await supabase.auth.signUp(
         {

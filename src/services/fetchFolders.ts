@@ -1,7 +1,7 @@
 import { supabase } from "../config/supabaseClient";
-import { folderType } from "../types/folder.types";
+import { Folder } from "../types/folder.types";
 
-export const fetchFolders: () => Promise<folderType[]> = async () => {
+export const fetchFolders: () => Promise<Folder[]> = async () => {
   const { data, error } = await supabase
     .from("folders")
     .select()

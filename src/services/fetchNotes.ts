@@ -1,7 +1,7 @@
 import { supabase } from "../config/supabaseClient";
-import { note } from "../types/notes.types";
+import { Note } from "../types/notes.types";
 
-export const fetchNotes: () => Promise<note[]> = async () => {
+export const fetchNotes: () => Promise<Note[]> = async () => {
   const { data, error } = await supabase
     .from("notes")
     .select()

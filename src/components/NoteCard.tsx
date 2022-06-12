@@ -6,14 +6,14 @@ import { useNotesContext } from "../context";
 import { ButtonWithLoader } from "./ButtonWithLoader";
 import { useOnOutsideClick } from "../hooks/useOnOutsideClick";
 import { toast } from "react-toastify";
-import { note } from "../types";
+import { Note } from "../types";
 import dayjs from "dayjs";
 
-type noteProps = {
-  note: note;
+type NoteProps = {
+  note: Note;
 };
 
-export const NoteCard = ({ note }: noteProps) => {
+export const NoteCard = ({ note }: NoteProps) => {
   const { created_at, tags, title, text_content, id } = note;
   const { dispatch } = useNotesContext();
   const [isLoading, setIsLoading] = useState(false);

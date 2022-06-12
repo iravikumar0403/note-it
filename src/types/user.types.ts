@@ -1,18 +1,13 @@
-import { loginFormValues, signupFormValues } from "./formValues.types";
+import { LoginFormValues, SignupFormValues } from "./formValues.types";
 
-export type userType = {
+export type User = {
   username: string;
   email: string;
 };
 
-export type userReducerAction = {
-  type: string;
-  payload: userType | null;
-};
-
-export type userContextType = {
-  user: userType | null;
-  signup: (values: signupFormValues) => Promise<unknown>;
-  login: (values: loginFormValues) => Promise<unknown>;
+export type UserContextType = {
+  user: User | null;
+  signup: (values: SignupFormValues) => Promise<unknown>;
+  login: (values: LoginFormValues) => Promise<unknown>;
   logout: () => void;
 };

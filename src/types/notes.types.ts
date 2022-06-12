@@ -1,7 +1,6 @@
-import React from "react";
-import { folderType } from "./folder.types";
+import { Folder } from "./folder.types";
 
-export type note = {
+export type Note = {
   title: string;
   created_at: string;
   folder_id: string;
@@ -12,30 +11,31 @@ export type note = {
   text_content: string;
 };
 
-export type noteContextState = {
-  notes: note[];
-  folders: folderType[];
-};
-
-export type notesContext = {
+export type NoteState = {
   loading: boolean;
-  notes: note[];
-  folders: folderType[];
-  getNoteById: (id: string) => note | undefined;
-  dispatch: React.Dispatch<noteReducerAction>;
+  notes: Note[];
+  folders: Folder[];
 };
 
-export type noteReducerAction =
+export type NoteContext = {
+  loading: boolean;
+  notes: Note[];
+  folders: Folder[];
+  getNoteById: (id: string) => Note | undefined;
+  dispatch: React.Dispatch<NoteAction>;
+};
+
+export type NoteAction =
   | {
       type: "INIT_LOADING";
     }
   | {
       type: "SET_NOTES";
-      payload: note[];
+      payload: Note[];
     }
   | {
       type: "SET_FOLDERS";
-      payload: folderType[];
+      payload: Folder[];
     }
   | {
       type: "DELETE_NOTE";

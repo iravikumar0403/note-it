@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ButtonWithLoader, Footer, Navbar } from "../components";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-import { signupFormValues } from "../types";
+import { SignupFormValues } from "../types";
 import { signupValidationSchema } from "../utils";
 import { useUserContext } from "../context/user-context";
 
@@ -19,7 +19,7 @@ export const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { user, signup } = useUserContext();
 
-  const handleSubmit = async (values: signupFormValues) => {
+  const handleSubmit = async (values: SignupFormValues) => {
     setIsLoading(true);
     signup(values).finally(() => setIsLoading(false));
   };

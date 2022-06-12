@@ -4,7 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import { ButtonWithLoader, Footer, Navbar } from "../components";
 import { useUserContext } from "../context/user-context";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-import { loginFormValues } from "../types";
+import { LoginFormValues } from "../types";
 import { loginValidationSchema } from "../utils";
 
 const initialFormValues = {
@@ -18,7 +18,7 @@ export const Login = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (values: loginFormValues) => {
+  const handleSubmit = async (values: LoginFormValues) => {
     setIsLoading(true);
     login(values).finally(() => setIsLoading(false));
   };
