@@ -5,9 +5,9 @@ import { deleteNoteById } from "../services";
 import { useNotesContext } from "../context";
 import { ButtonWithLoader } from "./ButtonWithLoader";
 import { useOnOutsideClick } from "../hooks/useOnOutsideClick";
+import { getFormattedDate } from "../utils";
 import { toast } from "react-toastify";
 import { Note } from "../types";
-import dayjs from "dayjs";
 
 type NoteProps = {
   note: Note;
@@ -60,10 +60,8 @@ export const NoteCard = ({ note }: NoteProps) => {
       </div>
       <div className="flex justify-between items-center">
         <p className="text-gray-500 ">
-          Created at:{" "}
-          <span className="text-gray-800">
-            {dayjs(created_at).format("DD MMM, YYYY")}
-          </span>
+          Created:{" "}
+          <span className="text-gray-800">{getFormattedDate(created_at)}</span>
         </p>
         <div className="relative" ref={ref}>
           <button

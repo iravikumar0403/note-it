@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
 import { AiOutlineFolder } from "react-icons/ai";
+import { getFormattedDate } from "../utils";
 import { Folder } from "../types";
 
 type FolderCardProps = {
@@ -16,10 +16,8 @@ export const FolderCard = ({ folder }: FolderCardProps) => {
       </div>
       <p className="my-1">{notes_count} notes</p>
       <p className="text-gray-500 ">
-        Created at:{" "}
-        <span className="text-gray-800">
-          {dayjs(created_at).format("DD MMM, YYYY")}
-        </span>
+        Created:{" "}
+        <span className="text-gray-800">{getFormattedDate(created_at)}</span>
       </p>
     </div>
   );
