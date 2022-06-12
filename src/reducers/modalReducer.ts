@@ -10,6 +10,13 @@ export const modalReducer = (state: ModalState, action: ModalAction) => {
         selectedFolder: null,
         selectedNote: null,
       };
+    case "RENAME_FOLDER":
+      return {
+        ...state,
+        type: action.type,
+        isVisible: true,
+        selectedFolder: action.payload,
+      };
     case "CLOSE_MODAL": {
       return {
         ...state,

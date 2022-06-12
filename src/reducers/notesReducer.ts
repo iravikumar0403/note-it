@@ -30,6 +30,15 @@ export const notesReducer = (state: NoteState, action: NoteAction) => {
         ...state,
         folders: [action.payload, ...state.folders],
       };
+    case "RENAME_FOLDER": {
+      const folders = state.folders.filter(
+        (folder) => folder.id !== action.payload.id
+      );
+      return {
+        ...state,
+        folders: [action.payload, ...folders],
+      };
+    }
     default:
       return state;
   }

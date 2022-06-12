@@ -44,4 +44,8 @@ export type NoteAction =
   | {
       type: "CREATE_FOLDER";
       payload: Folder;
+    }
+  | {
+      type: "RENAME_FOLDER";
+      payload: Folder;
     };

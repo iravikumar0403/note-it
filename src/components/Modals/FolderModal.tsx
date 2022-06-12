@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useModal, useNotesContext } from "../../context";
-import { createFolder } from "../../services";
+import { createFolder, renameFolder } from "../../services";
 import { ButtonWithLoader } from "../ButtonWithLoader";
 
 export const FolderModal = () => {
@@ -18,11 +18,21 @@ export const FolderModal = () => {
     }
     setIsLoading(true);
     try {
-      const data = await createFolder(folderName);
-      noteDispatch({
-        type: "CREATE_FOLDER",
-        payload: data,
-      });
+      if (selectedFolder) {
+        const data = await renameFolder(selectedFolder.id, folderName);
+        noteDispatch({
+          type: "RENAME_FOLDER",
+          payload: data,
+        });
+        toast.success("Folder renamed successfully");
+      } else {
+        const data = await createFolder(folderName);
+        noteDispatch({
+          type: "CREATE_FOLDER",
+          payload: data,
+        });
+        toast.success("Folder created successfully");
+      }
       modalDispatch({
         type: "CLOSE_MODAL",
       });
