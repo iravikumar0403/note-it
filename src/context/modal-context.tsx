@@ -14,7 +14,7 @@ const initialState: ModalState = {
 export const ModalProvider = ({ children }: ChildrenProp) => {
   const [{ isVisible, selectedFolder, selectedNote, type }, dispatch] =
     useReducer(modalReducer, initialState);
-
+  console.log({ isVisible, selectedFolder, selectedNote, type });
   return (
     <ModalContext.Provider
       value={{ isVisible, selectedFolder, selectedNote, type, dispatch }}

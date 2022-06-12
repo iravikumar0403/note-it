@@ -19,6 +19,9 @@ export type ModalAction =
   | {
       type: "MOVE_TO_FOLDER";
       payload: Note;
+    }
+  | {
+      type: "CLOSE_MODAL";
     };
 
 export type ModalContextType = {

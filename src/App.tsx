@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import { Toast } from "./components";
+import { Modal, Toast } from "./components";
 import { routes } from "./config";
 
 const App = () => {
@@ -8,6 +8,7 @@ const App = () => {
     <div className="mb-16">
       <Toast />
       {routesEl}
+      <Modal />
     </div>
   );
 };

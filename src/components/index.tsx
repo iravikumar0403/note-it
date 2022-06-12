@@ -13,3 +13,4 @@ export { RequireAuth } from "./RequireAuth";
 export { Sidebar } from "./Sidebar";
 export { TabLinks } from "./TabLinks";
 export { Toast } from "./Toast";
+export { Modal } from "./Modals";

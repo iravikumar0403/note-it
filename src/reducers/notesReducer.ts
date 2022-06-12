@@ -25,6 +25,11 @@ export const notesReducer = (state: NoteState, action: NoteAction) => {
         ...state,
         notes: state.notes.filter((note) => note.id !== action.payload),
       };
+    case "CREATE_FOLDER":
+      return {
+        ...state,
+        folders: [action.payload, ...state.folders],
+      };
     default:
       return state;
   }

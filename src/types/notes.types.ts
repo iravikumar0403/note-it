@@ -40,4 +40,8 @@ export type NoteAction =
   | {
       type: "DELETE_NOTE";
       payload: string;
+    }
+  | {
+      type: "CREATE_FOLDER";
+      payload: Folder;
     };

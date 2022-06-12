@@ -1,8 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useModal } from "../context";
 
 export const AddNewBtn = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { dispatch } = useModal();
+
+  const createFolder = () => {
+    dispatch({
+      type: "CREATE_FOLDER",
+    });
+    setShowMenu(false);
+  };
   return (
     <div className="fixed bottom-0 right-0 m-4">
       <button
@@ -16,7 +25,9 @@ export const AddNewBtn = () => {
           <Link to="/notes/new" className="btn-primary text-center py-2 px-8">
             New Note
           </Link>
-          <button className="btn-secondary py-2 px-8">New Folder</button>
+          <button className="btn-secondary py-2 px-8" onClick={createFolder}>
+            New Folder
+          </button>
         </div>
       )}
     </div>
