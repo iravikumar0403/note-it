@@ -6,7 +6,7 @@ import { ButtonWithLoader } from "../ButtonWithLoader";
 
 export const FolderModal = () => {
   const { dispatch: modalDispatch, type, selectedFolder } = useModal();
-  const { dispatch: noteDispatch } = useNotesContext();
+  const { dispatch: noteDispatch, folders } = useNotesContext();
   const [isLoading, setIsLoading] = useState(false);
   const [folderName, setFolderName] = useState<string>(() =>
     type === "RENAME_FOLDER" ? selectedFolder?.folder_name || "" : ""
@@ -16,6 +16,17 @@ export const FolderModal = () => {
       toast.error("Please enter the folder name");
       return;
     }
+
+    if (
+      folders.find(
+        (folder) =>
+          folder.folder_name.toUpperCase() === folderName.toUpperCase()
+      )
+    ) {
+      toast.error("A folder with same name already exists");
+      return;
+    }
+
     setIsLoading(true);
     try {
       if (selectedFolder) {
