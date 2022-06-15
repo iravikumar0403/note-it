@@ -39,6 +39,12 @@ export const notesReducer = (state: NoteState, action: NoteAction) => {
         folders: [action.payload, ...folders],
       };
     }
+    case "DELETE_FOLDER":
+      return {
+        ...state,
+        folders: state.folders.filter((folder) => folder.id !== action.payload),
+        notes: state.notes.filter((note) => note.folder_id !== action.payload),
+      };
     default:
       return state;
   }

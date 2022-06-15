@@ -48,4 +48,8 @@ export type NoteAction =
   | {
       type: "RENAME_FOLDER";
       payload: Folder;
+    }
+  | {
+      type: "DELETE_FOLDER";
+      payload: string;
     };

@@ -4,7 +4,10 @@ import { Folder } from "../types";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
 import { useOnOutsideClick } from "../hooks/useOnOutsideClick";
-import { useModal } from "../context";
+import { useModal, useNotesContext } from "../context";
+import { deleteFolderById } from "../services/deleteFolder";
+import { ButtonWithLoader } from "./ButtonWithLoader";
+import { toast } from "react-toastify";
 
 type FolderCardProps = {
   folder: Folder;
@@ -12,18 +15,34 @@ type FolderCardProps = {
 
 export const FolderCard = ({ folder }: FolderCardProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const ref = useOnOutsideClick(() => setShowDropdown(false));
-  const { dispatch } = useModal();
-  const { created_at, folder_name, notes_count } = folder;
+  const { dispatch: modalDispatch } = useModal();
+  const { dispatch: notesDispatch } = useNotesContext();
+  const { created_at, folder_name, notes_count, is_default, id } = folder;
 
   const renameFolder = () => {
-    dispatch({
+    modalDispatch({
       type: "RENAME_FOLDER",
       payload: folder,
     });
     setShowDropdown(false);
   };
-  const deleteFolder = () => {};
+
+  const deleteFolder = async () => {
+    try {
+      setIsLoading(true);
+      await deleteFolderById(id);
+      notesDispatch({
+        type: "DELETE_FOLDER",
+        payload: id,
+      });
+      toast.success("Folder and it's content are deleted");
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+    setIsLoading(false);
+  };
 
   return (
     <div className="flex flex-col shadow border m-2 p-4 w-[20rem] ">
@@ -54,12 +73,15 @@ export const FolderCard = ({ folder }: FolderCardProps) => {
               >
                 Rename
               </button>
-              <button
-                className="btn-primary flex justify-center items-center bg-red-500 text-black hover:bg-red-400 hover:text-black"
-                onClick={deleteFolder}
-              >
-                Delete
-              </button>
+              {is_default && (
+                <ButtonWithLoader
+                  isLoading={isLoading}
+                  className="btn-primary flex justify-center items-center bg-red-500 text-black hover:bg-red-400 hover:text-black"
+                  onClick={deleteFolder}
+                >
+                  Delete
+                </ButtonWithLoader>
+              )}
             </div>
           )}
         </div>
