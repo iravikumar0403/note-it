@@ -30,6 +30,11 @@ export const FolderCard = ({ folder }: FolderCardProps) => {
   };
 
   const deleteFolder = async () => {
+    if (is_default) {
+      toast.error("Cannot delete default folder");
+      setShowDropdown(false);
+      return;
+    }
     try {
       setIsLoading(true);
       await deleteFolderById(id);
@@ -73,15 +78,13 @@ export const FolderCard = ({ folder }: FolderCardProps) => {
               >
                 Rename
               </button>
-              {is_default && (
-                <ButtonWithLoader
-                  isLoading={isLoading}
-                  className="btn-primary flex justify-center items-center bg-red-500 text-black hover:bg-red-400 hover:text-black"
-                  onClick={deleteFolder}
-                >
-                  Delete
-                </ButtonWithLoader>
-              )}
+              <ButtonWithLoader
+                isLoading={isLoading}
+                className="btn-primary flex justify-center items-center bg-red-500 text-black hover:bg-red-400 hover:text-black"
+                onClick={deleteFolder}
+              >
+                Delete
+              </ButtonWithLoader>
             </div>
           )}
         </div>
