@@ -25,7 +25,7 @@ export const Navbar = ({ logoOnly }: props) => {
                 <Avatar />
               </button>
               {showDropdown && (
-                <div className="absolute bg-gray-100 shadow right-0 my-1 p-2 rounded">
+                <div className="absolute bg-gray-100 shadow right-0 my-1 p-2 rounded z-10">
                   <button
                     className="btn-secondary border-0 w-full"
                     onClick={logout}

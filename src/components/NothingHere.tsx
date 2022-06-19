@@ -1,4 +1,3 @@
-import React from "react";
 import empty_illustration from "../assets/images/empty.svg";
 
 export const NothingHere = () => {
