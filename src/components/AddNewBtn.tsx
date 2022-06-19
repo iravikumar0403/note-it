@@ -13,7 +13,7 @@ export const AddNewBtn = () => {
     setShowMenu(false);
   };
   return (
-    <div className="fixed bottom-0 right-0 m-4">
+    <div className="fixed bottom-0 right-0 m-4 md:hidden">
       <button
         className="btn-primary flex items-center justify-center text-3xl rounded-full h-12  w-12"
         onClick={() => setShowMenu((prev) => !prev)}

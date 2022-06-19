@@ -3,6 +3,7 @@ import { useNotesContext } from "../context";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { Loader } from "./Loader";
 import { NoteCard } from "./NoteCard";
+import { NothingHere } from "./NothingHere";
 
 export const NotesGrid = () => {
   const { id } = useParams();
@@ -15,6 +16,10 @@ export const NotesGrid = () => {
 
   if (loading) {
     return <Loader />;
+  }
+
+  if (notesToRender.length === 0) {
+    return <NothingHere />;
   }
 
   return (

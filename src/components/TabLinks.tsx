@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export const TabLinks = () => {
   return (
-    <div className="shadow flex divide-x">
+    <div className="shadow flex divide-x md:hidden">
       <NavLink
         to="/dashboard/notes"
         className={({ isActive }) =>
