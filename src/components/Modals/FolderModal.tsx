@@ -54,7 +54,7 @@ export const FolderModal = () => {
 
   return (
     <div className="m-auto -translate-y-full bg-white p-4 shadow-lg border rounded min-w-[10rem]">
-      <h2>Create New Folder</h2>
+      <h2>{selectedFolder ? "Rename Folder" : "Create New Folder"}</h2>
       <hr />
       <input
         type="text"
