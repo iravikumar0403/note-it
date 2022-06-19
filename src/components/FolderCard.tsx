@@ -1,13 +1,14 @@
+import { useState } from "react";
+import { Folder } from "../types";
 import { AiOutlineFolder } from "react-icons/ai";
 import { getFormattedDate } from "../utils";
-import { Folder } from "../types";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { useState } from "react";
 import { useOnOutsideClick } from "../hooks/useOnOutsideClick";
 import { useModal, useNotesContext } from "../context";
 import { deleteFolderById } from "../services/deleteFolder";
 import { ButtonWithLoader } from "./ButtonWithLoader";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 type FolderCardProps = {
   folder: Folder;
@@ -51,11 +52,13 @@ export const FolderCard = ({ folder }: FolderCardProps) => {
 
   return (
     <div className="flex flex-col shadow border m-2 p-4 w-[20rem] ">
-      <div className="flex mt-2">
-        <AiOutlineFolder size={"1.5rem"} />
-        <p className="text-xl">{folder_name}</p>
-      </div>
-      <p className="my-1">{notes_count} notes</p>
+      <Link to={`/folder/${id}`} className="mb-4">
+        <div className="flex mt-2">
+          <AiOutlineFolder size={"1.5rem"} />
+          <p className="text-xl">{folder_name}</p>
+        </div>
+        <p className="my-1">{notes_count} notes</p>
+      </Link>
       <div className="flex justify-between items-center">
         <p className="text-gray-500 ">
           Created:{" "}
@@ -63,9 +66,7 @@ export const FolderCard = ({ folder }: FolderCardProps) => {
         </p>
         <div className="relative" ref={ref}>
           <button
-            className={` rounded-full p-4 ${
-              showDropdown ? "bg-slate-100" : ""
-            }`}
+            className={`rounded-full p-2 ${showDropdown ? "bg-slate-100" : ""}`}
             onClick={() => setShowDropdown((prev) => !prev)}
           >
             <BsThreeDotsVertical />
